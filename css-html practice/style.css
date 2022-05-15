@@ -1,0 +1,98 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+ul {
+   list-style: none;
+}
+
+#nav {
+    background-color: green;
+    width: 100%;
+    height: 40px;
+}
+
+ul {
+    padding-top: 10px;
+}
+
+.company, .nav-item {
+    display: inline;
+    width: 100%;
+}
+
+.company {
+   text-transform: uppercase;
+   padding-right: 20px;
+   padding-left: 10px;
+}
+
+.main {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.nav-item {
+    padding-right: 5px;
+}
+
+.about h3 {
+    font-family: arial;
+    line-height: 1.6em;
+    letter-spacing: 0.02em;
+}
+
+.about p {
+    font-family: arial;
+    line-height: 1.6em;
+    letter-spacing: 0.02em;
+}
+
+.block {
+    width: 100%;
+}
+
+.same-line {
+    float: left;
+    display: inline;
+    height: 200px;
+    width: 33.33%;
+    background-color: blue;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.position-block {
+    border: 10px solid black;
+    height: 500px;
+    width: 772px;
+    margin-top: 220px;
+}
+
+.position-about {
+    padding-top: 200px;
+}
+
+.positon-h3 {
+    padding-top: 5px;
+}
+
+.flex-main {
+    padding-top: 100px;
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.flex-child{
+    height: 50px;
+    flex-grow: 1;
+    background-color: black;
+    border: 15px solid grey;
+}
+
+form > label, form > input, form > button {
+    display: block;
+}

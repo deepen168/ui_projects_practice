@@ -1,0 +1,127 @@
+
+<!-- Steps:
+1. create dummy html
+2. Add function to add label and dropdowns
+3. add button to click
+4. add eventlisteners for all dropdowns and buttons
+5. populate data in the dropdowns
+6. remove previously added elements -->
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="header">Calendar app</h1>
+    <div id="main">
+    </div>
+    <p></p>
+  </body>
+  <script>
+    let selectedYear;
+    let selectedMonth;
+    let selectedDate;
+    
+    const calendarData = {
+    	'2022': {
+        	'January': 30,
+            'February': 28,
+            'March': 30,
+            'April': 31,
+            'May': 30,
+            'June': 31,
+            'July': 30,
+            'August': 31,
+            'September': 30,
+            'October': 31,
+            'November': 30,
+            'December': 31
+        },
+      	'2023': {
+        	'January': 30,
+            'February': 29,
+            'March': 30,
+            'April': 31,
+            'May': 30,
+            'June': 31,
+            'July': 30,
+            'August': 31,
+            'September': 30,
+            'October': 31,
+            'November': 30,
+            'December': 31
+        }
+    }
+    
+  	const mainSelector = document.getElementById('main');
+
+    function createLabelandSelect(id, innerHTML) {
+        const labelSelector = document.createElement("label");
+        labelSelector.setAttribute('for', id);
+        labelSelector.innerHTML = innerHTML; 
+        main.appendChild(labelSelector);
+        
+        const selector = document.createElement("select");
+        selector.setAttribute('id', id);
+        main.appendChild(selector);
+
+    }
+
+    function deleteAllOptions(id) {
+        var options = document.querySelectorAll(`#${id} > option`);
+        options.forEach((option) => {
+            option.remove();
+        })
+    }
+
+    createLabelandSelect('yearSelector', 'Year');
+    createLabelandSelect('monthSelector', 'Month');
+    createLabelandSelect('daySelector', 'Day');
+
+    const buttonSelector = document.createElement("button");
+    buttonSelector.setAttribute('id', 'appointmentButton');
+    buttonSelector.innerHTML = 'Book Appointment'
+    main.appendChild(buttonSelector);
+
+    const yearSelector = document.getElementById('yearSelector');
+    const monthSelector = document.getElementById('monthSelector');
+    const daySelector = document.getElementById('daySelector');
+    
+    for(let [year, yearData] of Object.entries(calendarData)) {
+      	const yearElem = document.createElement('option');
+        yearElem.textContent = year;
+    	yearSelector.appendChild(yearElem);
+    }
+    
+    yearSelector.addEventListener('change', (e) => {
+    	selectedYear = e.target.selectedOptions[0].innerHTML;
+        deleteAllOptions('monthSelector');
+        deleteAllOptions('daySelector');
+        for(let month of Object.keys(calendarData[selectedYear])){
+            const monthElem = document.createElement('option');
+            monthElem.textContent = month;
+            monthSelector.appendChild(monthElem);
+        }
+    	
+    })
+    
+    monthSelector.addEventListener('change', (e) => {
+    	selectedMonth = e.target.selectedOptions[0].innerHTML;
+        deleteAllOptions('daySelector');
+        for(let date = 0; date <= calendarData[selectedYear][selectedMonth]; date++){
+            const day = document.createElement('option');
+            day.textContent = date;
+            daySelector.appendChild(day);
+        }
+    })
+
+    daySelector.addEventListener('change', (e) => {
+    	selectedDate = e.target.selectedOptions[0].innerHTML;
+    })
+
+    buttonSelector.addEventListener('click', () => {
+        const resultSelector = document.querySelector('p');
+        resultSelector.innerHTML = `appointment booked for ${selectedDate} ${selectedMonth} ${selectedYear}`;
+
+    });
+    
+  </script>
+</html>

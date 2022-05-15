@@ -1,0 +1,16 @@
+#infinite-list {
+    /* We need to limit the height and show a scrollbar */
+    width: 200px;
+    height: 300px;
+    overflow: auto;
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid black;
+  }
+  
+  li {
+    padding: 10px;
+    list-style-type: none;
+  }
+  
+  
